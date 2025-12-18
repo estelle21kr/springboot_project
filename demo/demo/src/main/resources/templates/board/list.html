@@ -9,7 +9,6 @@
     <div class = "container-sm">
         <h3> list page </h3>
 
-        [[${ph}]]
 
         <!-- 검색 -->
             <div class="container-fluid m-2">
@@ -72,17 +71,21 @@
     </table>
 
         <!--/* 페이지네이션 */-->
+        <!--/* th:classappend : 동적으로 클래스를 추가하는 방법 */-->
         <nav aria-label="Page navigation example">
             <ul class="pagination justify-content-center">
-                <li class="page-item">
-                    <a class="page-link" href="#" aria-label="Previous">
+                <li class="page-item" th:classappend="${ph.prev eq false ? 'disabled' : ''}">
+                    <a class="page-link" th:href="@{/board/list(pageNo=${ph.startPage}-1, qty=${ph.pgvo.qty}, type=${ph.pgvo.type}, keyword=${ph.pgvo.keyword})}" aria-label="Previous">
                         <span aria-hidden="true">&laquo;</span>
                     </a>
                 </li>
-                <li class="page-item"><a class="page-link" href="#">1</a></li>
+                <!--/* th:each begin end 옵션이 없음 ${#numbers.sequence(from, to)} */-->
+                <th:block th:each="i:${#numbers.sequence(ph.startPage, ph.endPage)}">
+                    <li class="page-item"><a class="page-link" th:href="@{/board/list(pageNo=${i}, qty=${ph.pgvo.qty}, type=${ph.pgvo.type}, keyword=${ph.pgvo.keyword})}"> [[${i}]] </a></li>
+                </th:block>
 
-                <li class="page-item">
-                    <a class="page-link" href="#" aria-label="Next">
+                <li class="page-item" th:classappend="${ph.next eq false ? 'disabled' : ''}">
+                    <a class="page-link" th:href="@{/board/list(pageNo=${ph.endPage}+1, qty=${ph.pgvo.qty}, type=${ph.pgvo.type}, keyword=${ph.pgvo.keyword})}" aria-label="Next">
                         <span aria-hidden="true">&raquo;</span>
                     </a>
                 </li>

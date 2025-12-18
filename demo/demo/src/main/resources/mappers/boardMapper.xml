@@ -25,19 +25,26 @@
         <include refid = "search"> </include>
     </select>
 
+    <update id = "update">
+        update board set title = #{title}, content = #{content}
+        where bno = #{bno}
+    </update>
+
+
+
     <sql id = "search">
         <if test = "type != null">
             <trim prefix = "and (" suffix=")" suffixOverrides="or">
                 <foreach collection = "typeToArray" item = "type">
                     <trim suffix="or">
                         <choose>
-                            <when test = "'t'.equals(type)">
+                            <when test = '"t".equals(type)'>
                                 title like concat('%', #{keyword}, '%')
                             </when>
-                            <when test = "'w'.equals(type)">
+                            <when test = '"w".equals(type)'>
                                 writer like concat('%', #{keyword}, '%')
                             </when>
-                            <when test = "'c'.equals(type)">
+                            <when test = '"c".equals(type)'>
                                 content like concat('%', #{keyword}, '%')
                             </when>
                         </choose>

@@ -36,4 +36,9 @@ public class BoardServiceImpl implements BoardService{
     public int getTotalCount(PagingVO pagingVO) {
         return boardDAO.getTotalCount(pagingVO);
     }
+
+    @Override
+    public void update(BoardVO boardVO) {
+        boardDAO.update(boardVO);
+    }
 }

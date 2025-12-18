@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import java.util.List;
 
@@ -46,5 +47,12 @@ public class BoardController {
     public void detail(Model model, @RequestParam("bno")long bno) {
         BoardVO boardVO = boardService.getDetail(bno);
         model.addAttribute("board", boardVO);
+    }
+
+    @PostMapping("/modify")
+    public String update(BoardVO boardVO, RedirectAttributes redirectAttributes) {
+        boardService.update(boardVO);
+        redirectAttributes.addAttribute("bno", boardVO.getBno());
+        return "/board/detail";
     }
 }

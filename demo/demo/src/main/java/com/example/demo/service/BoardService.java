@@ -13,4 +13,6 @@ public interface BoardService {
     BoardVO getDetail(long bno);
 
     int getTotalCount(PagingVO pagingVO);
+
+    void update(BoardVO boardVO);
 }
