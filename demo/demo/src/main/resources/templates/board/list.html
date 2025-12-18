@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate = "~{layout/layout}">
+      <!--/* layout:decorate = "~{붙일 레이아웃 경로}" : 내 조각이 붙여질 위치 */-->
+
+<div layout:fragment="content">
+    <div class = "container-sm">
+        <h3> index page </h3>
+        <table class="table">
+        <thead>
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">title</th>
+            <th scope="col">writer</th>
+            <th scope="col">regDate</th>
+            <th scope="col">readCount</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="board:${list}">
+            <th scope="row">[[${board.bno}]]</th>
+            <td><a th:href="@{/board/detail(bno=${board.bno})}">[[${board.title}]]</a></td>
+            <td>[[${board.writer}]]</td>
+            <td>[[${board.regDate}]]</td>
+            <td>[[${board.readCount}]]</td>
+        </tr>
+        <tr>
+            <th scope="row">2</th>
+            <td>Jacob</td>
+            <td>Thornton</td>
+            <td>@fat</td>
+        </tr>
+        <tr>
+            <th scope="row">3</th>
+            <td>John</td>
+            <td>Doe</td>
+            <td>@social</td>
+        </tr>
+        </tbody>
+    </table>
+    </div>
+</div>
+
