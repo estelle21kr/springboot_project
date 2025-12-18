@@ -53,6 +53,6 @@ public class BoardController {
     public String update(BoardVO boardVO, RedirectAttributes redirectAttributes) {
         boardService.update(boardVO);
         redirectAttributes.addAttribute("bno", boardVO.getBno());
-        return "/board/detail";
+        return "redirect:/board/detail";
     }
 }
