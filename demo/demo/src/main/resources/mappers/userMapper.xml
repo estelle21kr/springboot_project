@@ -21,7 +21,7 @@
     <select id = "getUserAuth"  resultType = "com.example.demo.domain.AuthVO">
         <!-- select * from auth where email = #{email} -->
         SELECT email, auth
-        FROM user_auth
+        FROM auth
         WHERE email = #{username}
     </select>
 
