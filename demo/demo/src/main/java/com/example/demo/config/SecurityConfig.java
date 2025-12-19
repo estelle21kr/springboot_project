@@ -29,14 +29,15 @@ public class SecurityConfig {
                 .authorizeHttpRequests(authorize ->
                         authorize.requestMatchers("/user/list").hasAnyRole("ADMIN")
                                 .requestMatchers("/","/index","/js/**","/board/list",
-                                        "/board/detail","/user/signup","/user/login").permitAll()
+                                        "/board/detail","/user/signup","/user/login",
+                                        "/user/register").permitAll()
                                 .anyRequest().authenticated()
                 )
                 .formLogin(login->
                         login.usernameParameter("email")
                                 .passwordParameter("pwd")
                                 .loginPage("/user/login")
-                                .defaultSuccessUrl("/board/list")
+                                .defaultSuccessUrl("/board/list", true)
                                 .failureUrl("/user/login")
                                 .permitAll()
                 )
@@ -44,7 +45,7 @@ public class SecurityConfig {
                         .logoutUrl("/user/logout")
                         .invalidateHttpSession(true)
                         .deleteCookies("JSESSIONID")
-                        .logoutSuccessUrl("/index")
+                        .logoutSuccessUrl("/")
                 ).build();
     }
     // UserDetailsService : 로그인 객체를 DB에서 확인

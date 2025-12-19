@@ -5,7 +5,7 @@
 <mapper namespace="com.example.demo.repository.UserDAO">
 
     <insert id = "insert">
-        insert into user((email, pwd, nick_name)
+        insert into user(email, pwd, nick_name)
         values(#{email}, #{pwd}, #{nickName})
     </insert>
 
@@ -15,10 +15,13 @@
     </insert>
 
     <select id = "getUser" resultType = "com.example.demo.domain.UserVO">
-        select * from user where email = #{email}
+        select * from user where email = #{username}
     </select>
 
     <select id = "getUserAuth"  resultType = "com.example.demo.domain.AuthVO">
-        select * from auth where email = #{email}
+        <!-- select * from auth where email = #{email} -->
+        SELECT email, auth
+        FROM user_auth
+        WHERE email = #{username}
     </select>
 </mapper>
