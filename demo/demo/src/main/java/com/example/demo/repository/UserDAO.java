@@ -16,4 +16,14 @@ public interface UserDAO {
     UserVO getUser(String username);
 
     List<AuthVO> getUserAuth(String username);
+
+    void remove(String name);
+
+    void modify(UserVO userVO);
+
+    void authDelete(String name);
+
+    void modifyNoPwd(UserVO userVO);
+
+    List<UserVO> getList();
 }
