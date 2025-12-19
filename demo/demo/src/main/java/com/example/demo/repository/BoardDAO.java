@@ -3,6 +3,7 @@ package com.example.demo.repository;
 import com.example.demo.domain.BoardVO;
 import com.example.demo.domain.PagingVO;
 import org.apache.ibatis.annotations.Mapper;
+import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
 
@@ -17,5 +18,9 @@ public interface BoardDAO {
     int getTotalCount(PagingVO pagingVO);
 
     void update(BoardVO boardVO);
+
+    void delete(long bno);
+
+    void readCountUpdate(@Param("bno") long bno, @Param("i") int i);
 }
 

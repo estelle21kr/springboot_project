@@ -55,4 +55,12 @@ public class BoardController {
         redirectAttributes.addAttribute("bno", boardVO.getBno());
         return "redirect:/board/detail";
     }
+
+    @GetMapping("/remove")
+    public String remove(@RequestParam("bno") long bno) {
+        boardService.delete(bno);
+        return "redirect:/board/list";
+    }
+
+
 }

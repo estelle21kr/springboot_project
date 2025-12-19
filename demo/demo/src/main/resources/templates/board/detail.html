@@ -33,7 +33,7 @@
             </form>
 
             <button type = "button" class="btn btn-primary" id="modBtn"> modify </button>
-            <button type = "button" class="btn btn-danger" id="delBtn"> delete </button>
+            <a th:href="@{/board/remove(bno=${board.bno})}"><button type = "button" class="btn btn-danger" id="delBtn"> delete </button></a>
 
             <script th:src="@{/js/boardModify.js}"> </script>
     </div>
