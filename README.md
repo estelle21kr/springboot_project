@@ -537,15 +537,6 @@ chore: 빌드 또는 의존성 변경
 
 ---
 
-## 💬 문의 및 피드백
-
-문제가 발생했거나 기능 요청이 있으신가요?
-
-- **이슈 등록**: [Issues 페이지](https://github.com/yourusername/spring-board/issues)
-- **이메일**: your-email@example.com
-
----
-
 ## 👨‍💻 개발자
 
 **Spring Board** 프로젝트는 Spring Boot 학습 목적으로 개발되었습니다.
